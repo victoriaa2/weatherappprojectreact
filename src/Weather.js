@@ -1,29 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-function handleSubmit(event) {
-  event.preventDefault();
-  search();
-}
+export default function Weather(props) {
+  const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
 
-function handleCityChange(event) {
-  setCity(event.target.value);
-}
-
-function Weather() {
-  const apiKey = "8d9838178b5b401f1b4e7cb5af18e210";
-  const [city, setCity] = React.useState("");
-
-  const search = useCallback(() => {
-    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-  }, [city]);
-
-  useEffect(() => {
-    search();
-  }, [search]);
-
-  const handleResponse = (response) => {
+  function handleResponse(response) {
     setWeatherData({
       ready: true,
       coordinates: response.data.coordinates,
@@ -35,28 +17,20 @@ function Weather() {
       wind: response.data.wind.speed,
       city: response.data.city,
     });
-  };
+  }
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={city} onChange={handleCityChange} />
-        <input type="submit" value="Search" />
-      </form>
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
 
-      {weatherData.ready && (
-        <div>
-          <h1>{weatherData.city}</h1>
-          <ul>
-            <li>Temperature: {weatherData.temperature}°C</li>
-            <li>Humidity: {weatherData.humidity}%</li>
-            <li>Description: {weatherData.description}</li>
-            <li>Wind: {weatherData.wind} m/s</li>
-            <li>Date: {weatherData.date.toString()}</li>
-          </ul>
-          <img src={weatherData.icon} alt={weatherData.description} />
-        </div>
-      )}
-    </div>
-  );
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
+  function search() {
+    const apiKey = "8d9838178b5b401f1b4e7cb5af18e210";
+    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
 }
