@@ -39,18 +39,19 @@ export default function App() {
         </div>
         <img
           src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
-          className="weather-app-icon"
+          alt="weather-app-icon"
         />
-        <br />
-        <br />
 
         <p className="Humiditydescription">
           Humidity: <span id="humidity">41%</span> Wind:
           <span id="wind-speed">2.06km/h</span>
         </p>
+        <br />
+        <br />
       </div>
 
       <hr />
+      <br />
       <p className="footer-notes">
         Coded by
         <a href="https://github.com/victoriaa2" target="_blank">
