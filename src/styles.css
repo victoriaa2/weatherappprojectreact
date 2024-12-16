@@ -1,0 +1,47 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #dceef8;
+  border-radius: 10px;
+  display: block;
+  text-align: center;
+}
+
+.h1 {
+  font-size: 45px;
+  display: block;
+  text-align: center;
+}
+
+body {
+  background-color: white;
+  padding: 30px;
+}
+
+.footer-notes {
+  font-size: 10px;
+  color: black;
+  text-align: center;
+  font-weight: 300;
+  margin: 13px 0;
+}
+.Humiditydescription {
+  padding-left: 3px;
+  font-size: 10px;
+  line-height: 0px;
+  display: block;
+  text-align: center;
+}
+
+.row {
+  flex-wrap: wrap;
+  padding: 1px 6px;
+}
+
+.col-9 {
+  padding: 1px 6px;
+  box-sizing: 2px;
+}
