@@ -1,15 +1,29 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function Weather(props) {
-  const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState(props.defaultCity);
+function handleSubmit(event) {
+  event.preventDefault();
+  search();
+}
+
+function handleCityChange(event) {
+  setCity(event.target.value);
+}
+
+function Weather() {
+  const apiKey = "8d9838178b5b401f1b4e7cb5af18e210";
+  const [city, setCity] = React.useState("");
+
+  const search = useCallback(() => {
+    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }, [city]);
 
   useEffect(() => {
     search();
   }, [search]);
 
-  function handleResponse(response) {
+  const handleResponse = (response) => {
     setWeatherData({
       ready: true,
       coordinates: response.data.coordinates,
@@ -21,22 +35,7 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       city: response.data.city,
     });
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    search();
-  }
-
-  function handleCityChange(event) {
-    setCity(event.target.value);
-  }
-
-  function search() {
-    const apiKey = "8d9838178b5b401f1b4e7cb5af18e210";
-    const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-  }
+  };
 
   return (
     <div>
