@@ -7,7 +7,7 @@ export default function Weather(props) {
 
   useEffect(() => {
     search();
-  }, [city]); // Call search whenever the city changes
+  }, [search]);
 
   function handleResponse(response) {
     setWeatherData({

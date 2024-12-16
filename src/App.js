@@ -54,7 +54,11 @@ export default function App() {
       <br />
       <p className="footer-notes">
         Coded by
-        <a href="https://github.com/victoriaa2" target="_blank">
+        <a
+          href="https://github.com/victoriaa2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Victoria Adeleke 👩🏾‍💻
         </a>
       </p>
