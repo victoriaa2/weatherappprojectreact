@@ -64,7 +64,7 @@ export default function WeatherInfo(props) {
             </a>
             and
             <a
-              href="https://dancing-daffodil-b8503c.netlify.app"
+              href="https://harmonious-pika-2e1b57.netlify.app/"
               target="_blank"
               rel="noreferrer"
             >
